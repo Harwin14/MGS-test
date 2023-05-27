@@ -9,7 +9,7 @@
             <div class="form-group">
               <label class="form-label">Nama Barang</label>
               <input
-                type="string"
+                type="text"
                 class="form-control"
                 v-model="barang.namaBarang"
                 placeholder="Masukkan Nama Barang"
@@ -18,7 +18,7 @@
             <div class="form-group">
               <label class="form-label">Harga Barang</label>
               <input
-                type="string"
+                type="text"
                 class="form-control"
                 v-model="barang.harga"
                 placeholder="Masukkan Harga Barang"
@@ -27,7 +27,7 @@
             <div class="form-group">
               <label class="form-label">Stok Barang</label>
               <input
-                type="string"
+                type="text"
                 class="form-control"
                 v-model="barang.stok"
                 placeholder="Masukkan Jumlah Stok Barang"

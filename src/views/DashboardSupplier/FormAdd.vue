@@ -10,7 +10,7 @@
             <div class="form-group">
               <label class="form-label">Nama Supplier</label>
               <input
-                type="string"
+                type="text"
                 class="form-control"
                 v-model="namaSupplier"
                 placeholder="Masukkan Nama Supplier"
@@ -20,7 +20,7 @@
             <div class="form-group">
               <label class="form-label">Alamat Supplier</label>
               <input
-                type="string"
+                type="text"
                 class="form-control"
                 v-model="alamat"
                 placeholder="Masukkan Alamat Supplier"
