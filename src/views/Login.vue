@@ -52,7 +52,6 @@ export default {
           username: this.username,
           password: this.password
         })
-        console.log(response.status)
         if (response.status == 200) {
           localStorage.setItem('accessToken', response.data.data.token)
           localStorage.setItem('user-info', response.data.data.username)

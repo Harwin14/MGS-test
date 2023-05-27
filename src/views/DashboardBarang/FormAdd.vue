@@ -81,6 +81,12 @@ export default {
   async created() {
     this.loadData()
   },
+  mounted() {
+    let user = localStorage.getItem('user-info')
+    if (!user) {
+      this.$router.push('/login')
+    }
+  },
   methods: {
     async loadData() {
       try {

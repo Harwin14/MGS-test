@@ -65,6 +65,12 @@ export default {
     alamat: '',
     noTelp: ''
   }),
+  mounted() {
+    let user = localStorage.getItem('user-info')
+    if (!user) {
+      this.$router.push('/login')
+    }
+  },
   methods: {
     async handleSubmit() {
       try {

@@ -35,8 +35,8 @@
             </div>
             <div class="form-group">
               <label class="form-label">Supplier Barang</label>
-              <select class="form-control" v-model="item" @change="onChange($event)">
-                <option value="barang.supplier.namaSupplier">Choose Supplier...</option>
+              <select class="form-control" v-model="barang.supplier" @change="onChange($event)">
+                <option value="">Choose Supplier...</option>
                 <option v-for="item in suppliers" :key="item.id" :value="item">
                   {{ item.namaSupplier }}
                 </option>
@@ -73,7 +73,7 @@ export default {
         stok: ''
       },
       supplier: '',
-      suppliers: '',
+      suppliers: {},
       onChange(e) {
         this.val = e.target.value
       }
@@ -107,10 +107,10 @@ export default {
             harga: this.barang.harga,
             stok: this.barang.stok,
             supplier: {
-              id: this.item.id,
-              namaSupplier: this.item.namaSupplier,
-              noTelp: this.item.noTelp,
-              alamat: this.item.alamat
+              id: this.barang.supplier.id,
+              namaSupplier: this.barang.supplier.namaSupplier,
+              noTelp: this.barang.supplier.noTelp,
+              alamat: this.barang.supplier.alamat
             }
           },
           {
@@ -119,6 +119,7 @@ export default {
             }
           }
         )
+        // console.log(this.barang.supplier.namaSupplier)
         this.$router.push('/')
       } catch (error) {
         console.log(error)
