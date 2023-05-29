@@ -217,7 +217,7 @@ export default {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-}
+} 
 .group {
   display: flex;
   gap: 4rem;
