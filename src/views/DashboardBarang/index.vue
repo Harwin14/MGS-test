@@ -215,11 +215,11 @@ export default {
   height: 90px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-evenly; 
   align-items: center;
 } 
 .group {
   display: flex; 
   gap: 4rem;
-}
+} 
 </style>
