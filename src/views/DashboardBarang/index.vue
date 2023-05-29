@@ -219,7 +219,7 @@ export default {
   align-items: center;
 } 
 .group {
-  display: flex;
+  display: flex; 
   gap: 4rem;
 }
 </style>
