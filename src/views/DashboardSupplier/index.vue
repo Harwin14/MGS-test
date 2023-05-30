@@ -2,51 +2,11 @@
   <div class="body">
     <Navbar />
     <main class="container">
-      <!-- ====START Card-===== -->
-      <div class="card-wrapper">
-        <div class="profil-wrapper">
-          <img src="@/assets/user.png" alt="" class="user-img" />
-          <div class="profil-user">
-            <span>
-              {{ user.profileName }}
-            </span>
-          </div>
-        </div>
-
-        <div class="menu-wrapper">
-          <div class="card-menu">
-            <span>Menu</span>
-            <div class="menu-list">
-              <router-link to="/" class="btn-menu">Barang</router-link>
-              <router-link to="/supplier" class="btn-menu active"> Supplier </router-link>
-            </div>
-          </div>
-        </div>
-
-        <div class="status-wrapper">
-          <h2>
-            Online &nbsp; <font-awesome-icon icon="fa-solid fa-circle" style="color: #128e10" />
-          </h2>
-          <div class="status">
-            <div class="group2">
-              <span class="status1">hari online &nbsp;</span>
-              <span class="status2"> : {{ date }}</span>
-            </div>
-            <div class="group2">
-              <span class="status3">waktu online </span>
-              <span class="status4"> : {{ timestamp }} &nbsp;&nbsp;&nbsp;</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ====END Card-===== -->
-
+      <Sidebar />
       <div class="main-dashboard">
         <div class="main-title">
           <h1>Dashboard</h1>
         </div>
-
         <ListSupplier />
       </div>
     </main>
@@ -55,53 +15,23 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Navbar from '../../components/Navbar.vue'
-import Footer from '../../components/Footer.vue'
-import ListSupplier from '../../components/ListSupplier.vue'
+import Navbar from '@/components/Navbar.vue'
+import Sidebar from '@/components/Sidebar.vue'
+import Footer from '@/components/Footer.vue'
+import ListSupplier from '@/components/ListSupplier.vue'
 
 export default {
   name: 'Dashboard',
   components: {
-    Navbar: Navbar,
-    Footer: Footer,
-    ListSupplier: ListSupplier
-  },
-  data() {
-    return {
-      user: '',
-      timestamp: ''
-    }
-  },
-  async created() {
-    const user = localStorage.getItem('user-info')
-    const response = await axios.get(`users/find-by-username?username=${user}`, {
-      headers: {
-        Authorization: 'Bearer ' + localStorage.getItem('accessToken')
-      }
-    })
-    this.user = response.data.data
+    Navbar,
+    Sidebar,
+    Footer,
+    ListSupplier
   },
   mounted() {
     let user = localStorage.getItem('user-info')
     if (!user) {
       this.$router.push('/login')
-    }
-    setInterval(
-      function () {
-        this.getNow()
-      }.bind(this),
-      1000
-    )
-  },
-  methods: {
-    getNow: function () {
-      const today = new Date()
-      const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
-      const time = today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()
-      const dateTime = time
-      this.timestamp = dateTime
-      this.date = date
     }
   }
 }

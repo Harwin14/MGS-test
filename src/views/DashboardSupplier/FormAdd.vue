@@ -50,15 +50,15 @@
 </template>
 
 <script>
-import Navbar from '../../components/Navbar.vue'
-import Footer from '../../components/Footer.vue'
+import Navbar from '@/components/Navbar.vue'
+import Footer from '@/components/Footer.vue'
 import axios from 'axios'
 
 export default {
   name: 'FormAdd',
   components: {
-    Navbar: Navbar,
-    Footer: Footer
+    Navbar,
+    Footer
   },
   data: () => ({
     namaSupplier: '',

@@ -1,6 +1,9 @@
 <template>
   <div class="title">
-    <h2>Supplier</h2>
+    <div>
+      <h2>Supplier</h2>
+      <input type="text" v-model="cari" placeholder="Cari Data" class="search" />
+    </div>
     <router-link to="/addSupplier" class="btn-lg">Tambah Supplier</router-link>
   </div>
   <div class="table-wrapper">
@@ -15,7 +18,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in dataSupplier" :key="item.id">
+        <tr v-for="(item, index) in cariData" :key="item.id">
           <td>{{ index + 1 }}</td>
           <td>{{ item.namaSupplier }}</td>
           <td>{{ item.alamat }}</td>
@@ -38,11 +41,19 @@ export default {
   name: 'Supplier',
   data() {
     return {
-      dataSupplier: ''
+      dataSupplier: [],
+      cari:''
     }
   },
   async created() {
     this.loadData()
+  },
+  computed:{
+    cariData() {
+      return this.dataSupplier.filter((item) => {
+        return item.namaSupplier.match(this.cari)
+      })
+    }
   },
   methods: {
     async loadData() {
@@ -72,6 +83,15 @@ export default {
 </script>
 
 <style>
+.search {
+  border: 2px solid grey;
+  border-radius: 4px;
+  width: 200px;
+  height: 30px;
+  font-size: 16px;
+  padding: 2px;
+  margin: 10px;
+}
 .table-wrapper {
   padding-right: 10px;
 }

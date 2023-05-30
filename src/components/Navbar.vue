@@ -3,6 +3,8 @@
     <div class="nav-title">
       <h3>MARKETPLACE</h3>
       <img alt="Vue logo" class="logo" src="@/assets/logo-remove.png" width="100" height="70" />
+      <p>{{ name }}</p>
+      <button @click="changeName">Change name</button>
     </div>
     <div class="left">
       <div class="logout">
@@ -17,13 +19,23 @@
 <script>
 export default {
   name: 'Navbar',
+  props: ['name'],
   components: {},
+  data() {
+    return {
+      newName: 'harwin text dari child'
+    }
+  },
   methods: {
+    changeName() {
+      this.$emit('changeName', this.newName)
+    },
     logout() {
       localStorage.clear()
       this.$router.push('/login')
     }
-  }
+  },
+  emits: ['changeName']
 }
 </script>
 
